@@ -125,6 +125,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun requestLocationWeatherData() {
         val request = ServiceBuilder.buildService(WeatherEndPoints::class.java)
+
+        //openweathermap.org API KEY is needed here
         val call = request.getLocationWeatherData(lastLocation.latitude, lastLocation.longitude, weatherAPIKEY,"imperial")
 
         call.enqueue(object : Callback<WeatherData>{
@@ -150,7 +152,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun requestUMSLWeatherData(){
         val request = ServiceBuilder.buildService(WeatherEndPoints::class.java)
+
+        //openweathermap.org API KEY is needed here
         val call = request.getLocationWeatherData(umslLatLon.latitude, umslLatLon.longitude, weatherAPIKEY, "imperial")
+
 
         call.enqueue(object : Callback<WeatherData>{
             override fun onResponse(call: Call<WeatherData>, response: Response<WeatherData>) {
