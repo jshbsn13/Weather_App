@@ -46,10 +46,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btnRefresh.isEnabled = false
+        binding.btnRefresh.isEnabled = false // turns off refresh button when app first starts
 
         binding.btnRefresh.setOnClickListener { event ->
-            binding.progressBar.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE // turns progress bar back on
+            mMap.clear() //clears old markers off map to make room for new ones
             Toast.makeText(this, "Refreshed!", Toast.LENGTH_SHORT).show()
             initializeMap()
         }
